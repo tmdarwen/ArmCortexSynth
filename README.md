@@ -3,7 +3,7 @@ ArmCortexSynth
 
 Turns an ARM Cortex-M4F Processor into a Syntheizer
 
-Video Demo: [https://youtu.be/UTizmNIYIBM](https://youtu.be/UTizmNIYIBM)
+Video Demo: <https://youtu.be/UTizmNIYIBM>
 
  
 
@@ -24,7 +24,7 @@ Video Demo: [https://youtu.be/UTizmNIYIBM](https://youtu.be/UTizmNIYIBM)
 -   [Texas Instruments LM4041 ](http://www.ti.com/lit/ds/symlink/lm4041c.pdf)
 
 -   [Newhaven
-    NHD-0420H1Z-FL-GBW-33V3](tp://www.newhavendisplay.com/nhd0420h1zflgbw33v3-p-5163.htm)
+    NHD-0420H1Z-FL-GBW-33V3](http://www.newhavendisplay.com/nhd0420h1zflgbw33v3-p-5163.html)
     (LCD Screen)
 
 -   [Digikey
@@ -50,7 +50,7 @@ Video Demo: [https://youtu.be/UTizmNIYIBM](https://youtu.be/UTizmNIYIBM)
 
 -   Development was done with TI's Code Composer Studio (CCS) 7.0.
 
--   Currently, only source files are in the repo.  There are currently no
+-   Currently, only source files are in the repo. There are currently no
     scripts, etc to generate makefiles or project files for quick/easy
     compilation.
 
@@ -58,7 +58,7 @@ Video Demo: [https://youtu.be/UTizmNIYIBM](https://youtu.be/UTizmNIYIBM)
     Note that I used a both stack and heap sizes of 4096 and also make sure to
     add your Tiva C Series directory into the include path.
 
--   Unfortunately TI's C/C++ compiler support is only up to C++03.  I would have
+-   Unfortunately TI's C/C++ compiler support is only up to C++03. I would have
     very much liked to have used some C++11 and later features :(
 
 -   Future plans include allowing this to also compile under the GNU ARM
