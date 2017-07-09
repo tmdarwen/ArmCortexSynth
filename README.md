@@ -43,8 +43,8 @@ Video Demo: <https://youtu.be/UTizmNIYIBM>
 -   Typical MIDI Cable
     ([Example](https://www.amazon.com/gp/product/B009GUP89S/ref=s9_acsd_topr_hd_bw_boEpr_c_x_2_w?pf_rd_m=ATVPDKIKX0DER&pf_rd_s=merchandised-search-4&pf_rd_r=1DZD7NG6RAR0H224K6TV&pf_rd_t=101&pf_rd_p=99ef2030-b386-50e5-bf67-36b72f770aed&pf_rd_i=11973431))
 
--   Miscellaneous resistors and capacitors, see the schematics images in the
-    documents directory.
+-   Miscellaneous resistors, capacitors and interconnect wires.  See the
+    schematic images in the documentation directory for details.
 
  
 
@@ -52,19 +52,19 @@ Video Demo: <https://youtu.be/UTizmNIYIBM>
 
 -   Development was done with TI's Code Composer Studio (CCS) 7.0.
 
--   Currently, only source files are in the repo. There are currently no
-    scripts, etc to generate makefiles or project files for quick/easy
-    compilation.
+-   Currently, all source files are in the repo. However, there are no scripts,
+    etc to generate makefiles or project files for quick/easy compilation.  One
+    of the first enhancements I expect to make is to remedy this situation.
 
 -   Creating/importing into a new project in CCS should not be very difficult.
-    Note that I used a both stack and heap sizes of 4096 and also make sure to
-    add your Tiva C Series directory into the include path.
+    Note that I used both stack and heap sizes of 4096 and also make sure to add
+    your Tiva C Series directory into the include path.
 
 -   Unfortunately TI's C/C++ compiler support is only up to C++03. I would have
     very much liked to have used some C++11 and later features :(
 
--   Future plans include allowing this to also compile under the GNU ARM
-    Toolchain and possibly other popular embedded environments.
+-   Future plans include allowing compilation under the GNU ARM Toolchain and
+    possibly other popular embedded environments.
 
  
 
