@@ -14,6 +14,8 @@ Video Demo: <https://youtu.be/UTizmNIYIBM>
 
 -   MIDI Keyboard ([Example](https://www.youtube.com/watch?v=7zAPMpPD-n4))
 
+-   Typical Computer Speakers
+
 -   [Maxim
     MAX541](https://datasheets.maximintegrated.com/en/ds/MAX541-MAX542.pdf)
     (Audio DAC)
