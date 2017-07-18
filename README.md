@@ -1,17 +1,20 @@
 ArmCortexSynth
 ==============
 
-Turns an ARM Cortex-M4F Processor into a Syntheizer
+A fully functioning MIDI synthesizer based on an ARM Cortex-M4F processor (Tiva LaunchPad TM4C123G).
 
 Video Demo: <https://youtu.be/UTizmNIYIBM>
 
  
 
-**Main Hardware**
+**Hardware**
 
 -   [Texas Instruments Tiva C Series TM4C123G LaunchPad](http://www.ti.com/tool/ek-tm4c123gxl)
 
 -   MIDI Keyboard ([Example](https://www.youtube.com/watch?v=7zAPMpPD-n4))
+
+-   Typical MIDI Cable
+    ([Example](https://www.amazon.com/gp/product/B009GUP89S/ref=s9_acsd_topr_hd_bw_boEpr_c_x_2_w?pf_rd_m=ATVPDKIKX0DER&pf_rd_s=merchandised-search-4&pf_rd_r=1DZD7NG6RAR0H224K6TV&pf_rd_t=101&pf_rd_p=99ef2030-b386-50e5-bf67-36b72f770aed&pf_rd_i=11973431))
 
 -   Typical Computer Speakers
 
@@ -29,39 +32,43 @@ Video Demo: <https://youtu.be/UTizmNIYIBM>
 
 -   [Digikey 751-1263-5-ND](http://www.digikey.com/product-detail/en/6N138/751-1263-5-ND/1731496) (6N138 Optocoupler)
 
--   Typical MIDI Cable
-    ([Example](https://www.amazon.com/gp/product/B009GUP89S/ref=s9_acsd_topr_hd_bw_boEpr_c_x_2_w?pf_rd_m=ATVPDKIKX0DER&pf_rd_s=merchandised-search-4&pf_rd_r=1DZD7NG6RAR0H224K6TV&pf_rd_t=101&pf_rd_p=99ef2030-b386-50e5-bf67-36b72f770aed&pf_rd_i=11973431))
-
 -   Miscellaneous resistors, capacitors and interconnect wires. See the schematic images in the documentation directory for details.
 
  
 
-**The Code**
+**Building on Windows**
 
--   Development was done with TI's Code Composer Studio (CCS) 7.0.
+1.   If you haven't already done so, downloaded and install [TivaWare for C Series](http://www.ti.com/tool/sw-tm4c).
 
--   Currently, all source files are in the repo. However, there are no scripts,
-    etc to generate makefiles or project files for quick/easy compilation. One
-    of the first enhancements I expect to make is to remedy this situation.
+1.   Download and install [TI's Code Composer Studio](http://www.ti.com/tool/ccstudio) (CCS) v7.0 or later.
 
--   Creating/importing into a new project in CCS should not be very difficult.
-    Note that I used both stack and heap sizes of 4096 and also make sure to add
-    your Tiva C Series directory into the include path.
+1.   Setup environment variable TIVA_WARE_C_SERIES_DIR to point to the "TivaWare for C Series" directory.
 
--   Unfortunately TI's C/C++ compiler support is only up to C++03. I would have
-    very much liked to have used some C++11 and later features :(
+1.   Setup environment variable ARM_CORTEX_SYNTH_ROOT_DIR to point to the directory at which you've cloned this repo.
 
--   Future plans include allowing compilation under the GNU ARM Toolchain and
-    possibly other popular embedded environments.
+1.   After starting CCS, select "File -> Import" and select "CCS Projects" and press the "Next" button.
 
- 
+1.   Set the "Select search-directory" to the directory at which you've cloned this repo.  It should automatically find the "ArmCortexSynth" project file.  Click the "Finish" button.
 
-**Upcoming Plans**
+1.   A new project (ArmCortexSynth) should now be imported into your workspace.
 
--   Allow for easy makefile and/or project file instantiation using CMake or
-    something similar.
+1.   You should be able to build (either debug or release).  This will generate an ArmCortexSynth.bin file that can be flashed to the Tiva LaunchPad (TM4C123G) development board using TI's [LM Flash Programmer](http://www.ti.com/tool/lmflashprogrammer).
 
--   Support GNU ARM Toolchain and additional popular embedded environments.
+
+
+**Miscellaneous Notes Concerning the Project**
+
+-   Unfortunately TI's C++ compiler support is only up to C++03. I would have very much liked to have used some C++11 (and later) features :(
+
+-   Currently, the only (easy) way to build this is through TI's Code Composer Studio (see instructions above).  Ideally, I would have functionality in place to allow a build tool (CMake?) to generate a makefile or other project files.
+
+
+
+**To Do**
+
+-   Allow for easy makefile and/or project file instantiation using CMake or something similar.
+
+-   Support GNU ARM Toolchain and additional popular embedded development toolchains.
 
 -   Support additional development boards (not just the TI TM4C123G series)
 
