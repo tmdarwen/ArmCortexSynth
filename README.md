@@ -1,8 +1,7 @@
 ArmCortexSynth
 ==============
 
-A fully functioning MIDI synthesizer based on an ARM Cortex-M4F processor (Tiva LaunchPad TM4C123G).
-
+A fully functioning MIDI synthesizer based on an ARM Cortex-M4F processor ([Tiva LaunchPad TM4C123G]http://www.ti.com/tool/ek-tm4c123gxl)).
 Video Demo: <https://youtu.be/UTizmNIYIBM>
 
  
@@ -54,7 +53,7 @@ Video Demo: <https://youtu.be/UTizmNIYIBM>
 
 1.   You should be able to build (either debug or release).  This will generate an ArmCortexSynth.bin file that can be flashed to the Tiva LaunchPad (TM4C123G) development board using TI's [LM Flash Programmer](http://www.ti.com/tool/lmflashprogrammer).
 
-
+ 
 
 **Miscellaneous Notes Concerning the Project**
 
@@ -62,7 +61,7 @@ Video Demo: <https://youtu.be/UTizmNIYIBM>
 
 -   Currently, the only (easy) way to build this is through TI's Code Composer Studio (see instructions above).  Ideally, I would have functionality in place to allow a build tool (CMake?) to generate a makefile or other project files.
 
-
+ 
 
 **To Do**
 
