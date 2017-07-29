@@ -32,9 +32,10 @@
 class Oscillator
 {
     public:
+        Oscillator();
         Oscillator(WaveformType waveformType, uint8_t level, int8_t cent, int8_t semitone);
 
-        void MixInOscillatorAudio(uint16_t buffer[], uint32_t bufferSampleSize, uint8_t totalOscillatorCount, uint8_t noteIndex, uint32_t currentSample);
+        void MixInOscillatorAudio(uint16_t buffer[], uint32_t bufferSampleSize, uint8_t totalOscillatorCount, uint8_t noteIndex, uint64_t currentSample);
 
         WaveformType GetWaveformType();
         uint8_t GetLevel();

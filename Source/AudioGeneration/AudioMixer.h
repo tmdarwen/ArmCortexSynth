@@ -27,6 +27,7 @@
 #pragma once
 
 #include <stdint.h>
+#include <AudioGeneration/Oscillator.h>
 
 class Oscillator;
 
@@ -34,20 +35,20 @@ class AudioMixer
 {
     public:
         AudioMixer();
-        void SetOscillator1(Oscillator*);
-        void SetOscillator2(Oscillator*);
-        void SetOscillator3(Oscillator*);
+        Oscillator* GetOscillator1();
+        Oscillator* GetOscillator2();
+        Oscillator* GetOscillator3();
 
         void SetMIDINote(uint8_t midiNoteIndex);
         void GetAudioData(uint16_t buffer[], uint32_t bufferSampleSize);
 
     private:
-        void CalculateNoteFrequencyTable();
-        int GetActiveOscillatorCount();
+		void SetupDefaultOscillatorValues();
+        uint8_t GetActiveOscillatorCount();
 
-        Oscillator* oscillator1_;
-        Oscillator* oscillator2_;
-        Oscillator* oscillator3_;
+        Oscillator oscillator1_;
+        Oscillator oscillator2_;
+        Oscillator oscillator3_;
 
         uint8_t midiNoteIndex_;
         static const uint8_t MIDI_NOTE_COUNT_ = 128;

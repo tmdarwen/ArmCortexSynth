@@ -28,6 +28,13 @@
 #include "AudioGeneration/NoteFrequencyTable.h"
 #include <math.h>
 
+// The default constructor just sets up default values for the oscillator
+Oscillator::Oscillator() :
+    waveformType_(Square),
+    level_(10),
+    cent_(0),
+    semitone_(0) { }
+
 Oscillator::Oscillator(enum WaveformType waveformType, uint8_t level, int8_t cent, int8_t semitone) :
     waveformType_(waveformType),
     level_(level),
@@ -74,12 +81,12 @@ void Oscillator::SetSemitone(int8_t semitone)
     semitone_ = semitone;
 }
 
-void Oscillator::MixInOscillatorAudio(uint16_t buffer[], uint32_t bufferSampleSize, uint8_t totalOscillatorCount, uint8_t noteIndex, uint32_t currentSample)
+void Oscillator::MixInOscillatorAudio(uint16_t buffer[], uint32_t bufferSampleSize, uint8_t totalOscillatorCount, uint8_t noteIndex, uint64_t currentSample)
 {
     float samplesForOneCycle;
     float cyclePercent;
     float peakLevel;
-    volatile int i = 0;
+    volatile uint32_t i = 0;
 
     if(waveformType_ == None)
     {
@@ -89,17 +96,17 @@ void Oscillator::MixInOscillatorAudio(uint16_t buffer[], uint32_t bufferSampleSi
     peakLevel = 0xFFFF * ((float)level_ / 10.0f) / (float)totalOscillatorCount;
     samplesForOneCycle = GetSamplesPerCycle(noteIndex);
 
-    for(i = 0; i < bufferSampleSize; ++i)
+    for(uint32_t i = 0; i < bufferSampleSize; ++i)
     {
-        cyclePercent = fmodf(currentSample + i, samplesForOneCycle) / samplesForOneCycle;
+        cyclePercent = fmodf(static_cast<float>(currentSample + i), samplesForOneCycle) / samplesForOneCycle;
 
         if(waveformType_ == Square && cyclePercent > 0.5)
         {
-            buffer[i] += peakLevel;
+            buffer[i] += static_cast<uint16_t>(peakLevel);
         }
         else if(waveformType_ == Sawtooth)
         {
-            buffer[i] += peakLevel * cyclePercent;
+            buffer[i] += static_cast<uint16_t>(peakLevel * cyclePercent);
         }
     }
 }
@@ -107,7 +114,7 @@ void Oscillator::MixInOscillatorAudio(uint16_t buffer[], uint32_t bufferSampleSi
 float Oscillator::GetSamplesPerCycle(uint8_t noteIndex)
 {
     float frequency;
-    float centAdjustment = cent_ / 100.0;
+    float centAdjustment = static_cast<float>(cent_ / 100.0);
 
     if(noteIndex == 0)
     {

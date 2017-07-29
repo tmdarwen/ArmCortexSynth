@@ -32,4 +32,4 @@ void StringCopy(const char* source, char* target, uint32_t maxLength);
 unsigned int StringLength(const char* source);
 void NumberToString(int32_t number, char* string);
 void StringCat(const char* source, char* target, uint32_t maxLength);
-char* itoa (int32_t value, char *result, int32_t base);
+char* IntegerToString(int32_t value, char *result, int32_t base);

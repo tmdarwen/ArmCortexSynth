@@ -30,24 +30,31 @@
 #include <math.h>
 #include <stddef.h>
 
-AudioMixer::AudioMixer() : sampleCount_(NULL), midiNoteIndex_(NO_MIDI_NOTE_), oscillator1_(NULL), oscillator2_(NULL), oscillator3_(NULL)
+AudioMixer::AudioMixer() : sampleCount_(0), midiNoteIndex_(NO_MIDI_NOTE_)
 {
     InitializeNoteFrequencyTable();
+	SetupDefaultOscillatorValues();
 }
 
-void AudioMixer::SetOscillator1(Oscillator* oscillator)
+void AudioMixer::SetupDefaultOscillatorValues()
 {
-    oscillator1_ = oscillator;
+	oscillator2_.SetCent(8);
+	oscillator3_.SetCent(-8);
 }
 
-void AudioMixer::SetOscillator2(Oscillator* oscillator)
+Oscillator* AudioMixer::GetOscillator1()
 {
-    oscillator2_ = oscillator;
+    return &oscillator1_;
 }
 
-void AudioMixer::SetOscillator3(Oscillator* oscillator)
+Oscillator* AudioMixer::GetOscillator2()
 {
-    oscillator3_ = oscillator;
+    return &oscillator2_;
+}
+
+Oscillator* AudioMixer::GetOscillator3()
+{
+    return &oscillator3_;
 }
 
 void AudioMixer::SetMIDINote(uint8_t midiNoteIndex)
@@ -62,13 +69,13 @@ void AudioMixer::SetMIDINote(uint8_t midiNoteIndex)
     }
 }
 
-int AudioMixer::GetActiveOscillatorCount()
+uint8_t AudioMixer::GetActiveOscillatorCount()
 {
     int oscillatorCount = 0;
 
-    if(oscillator1_->GetWaveformType() != None) { ++oscillatorCount; }
-    if(oscillator2_->GetWaveformType() != None) { ++oscillatorCount; }
-    if(oscillator3_->GetWaveformType() != None) { ++oscillatorCount; }
+    if(oscillator1_.GetWaveformType() != None) { ++oscillatorCount; }
+    if(oscillator2_.GetWaveformType() != None) { ++oscillatorCount; }
+    if(oscillator3_.GetWaveformType() != None) { ++oscillatorCount; }
 
     return oscillatorCount;
 }
@@ -80,11 +87,17 @@ void AudioMixer::GetAudioData(uint16_t buffer[], uint32_t bufferSampleSize)
         return;
     }
 
-    int totalOscillatorCount = GetActiveOscillatorCount();
+    // Silent the audio buffer before adding audio to it through the oscillators
+	for(unsigned int i = 0 ; i < bufferSampleSize; ++i)
+    {
+        buffer[i] = 0;
+    }
 
-    oscillator1_->MixInOscillatorAudio(buffer, bufferSampleSize, totalOscillatorCount, midiNoteIndex_, sampleCount_);
-    oscillator2_->MixInOscillatorAudio(buffer, bufferSampleSize, totalOscillatorCount, midiNoteIndex_, sampleCount_);
-    oscillator3_->MixInOscillatorAudio(buffer, bufferSampleSize, totalOscillatorCount, midiNoteIndex_, sampleCount_);
+    uint8_t totalOscillatorCount = GetActiveOscillatorCount();
+
+    oscillator1_.MixInOscillatorAudio(buffer, bufferSampleSize, totalOscillatorCount, midiNoteIndex_, sampleCount_);
+    oscillator2_.MixInOscillatorAudio(buffer, bufferSampleSize, totalOscillatorCount, midiNoteIndex_, sampleCount_);
+    oscillator3_.MixInOscillatorAudio(buffer, bufferSampleSize, totalOscillatorCount, midiNoteIndex_, sampleCount_);
 
     sampleCount_ += bufferSampleSize;
 }

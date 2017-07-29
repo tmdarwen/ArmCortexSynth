@@ -26,5 +26,7 @@
 
 #pragma once
 
+#include <stdint.h>
+
 void InitializeNoteFrequencyTable();
-float GetFrequency(int noteIndex);
+float GetFrequency(uint8_t noteIndex);

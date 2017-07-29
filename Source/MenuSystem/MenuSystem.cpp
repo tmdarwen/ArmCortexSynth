@@ -75,7 +75,7 @@ void MenuSystem::UpdateText()
 	for( ; currentRow < currentMenu_->GetRowCount(); ++currentRow)
 	{
 		char text[TEXT_SIZE + NULL_CHAR_SIZE];
-		text[0] = NULL;
+		text[0] = '\0';
         if(currentRow_ == currentRow) StringCat("> ", text, TEXT_SIZE);
         else StringCat("  ", text, TEXT_SIZE);
 

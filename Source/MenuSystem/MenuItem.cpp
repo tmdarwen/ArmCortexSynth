@@ -31,7 +31,7 @@
 
 MenuItem::MenuItem() : subMenu_(0), menuItemValue_(0)
 {
-	text_[0] = NULL;
+	text_[0] = '\0';
 }
 
 MenuItem::MenuItem(const char* text, Menu* subMenu) : subMenu_(subMenu), menuItemValue_(0)

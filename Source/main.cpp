@@ -55,12 +55,6 @@ void FillAudioBufferCallback(uint16_t* buffer, uint32_t bufferSampleSize)
         pAudioMixer->SetMIDINote(GetMostRecentMIDIKey());
     }
 
-    // Silent the audio buffer before adding audio to it
-    for( ; i < bufferSampleSize; ++i)
-    {
-        buffer[i] = 0;
-    }
-
     pAudioMixer->GetAudioData(buffer, bufferSampleSize);
 }
 
@@ -104,15 +98,15 @@ void main()
     audioMixer.SetOscillator2(&oscillator2);
     audioMixer.SetOscillator3(&oscillator3);
 
-    Oscillator* oscillators[3];
-    oscillators[0] = &oscillator1;
-    oscillators[1] = &oscillator2;
-    oscillators[2] = &oscillator3;
 
     Logger::PrintStringWithNewLine("Initializing LCD Menu");
     LCDOutput lcdOutput;
 
     Logger::PrintStringWithNewLine("Initializing Synth Menu");
+    Oscillator* oscillators[3];
+    oscillators[0] = audioMixer.GetOscillator1();
+    oscillators[1] = audioMixer.GetOscillator2();
+    oscillators[2] = audioMixer.GetOscillator3();
     SynthMenu synthMenu(&lcdOutput, oscillators);
 
     Logger::PrintStringWithNewLine("Initializing Synth Menu Inputs");

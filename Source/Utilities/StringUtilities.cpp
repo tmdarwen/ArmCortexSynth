@@ -38,7 +38,7 @@ void StringCopy(const char* source, char* target, uint32_t maxLength)
 		++counter;
 	}
 
-	target[counter] = NULL;  // Place NULL at end
+	target[counter] = '\0';  // Place string terminator at the end
 }
 
 unsigned int StringLength(const char* theString)
@@ -54,8 +54,7 @@ unsigned int StringLength(const char* theString)
 
 void NumberToString(int32_t number, char* string)
 {
-    //usprintf(string, "%d", number);
-    itoa(number, string, 10);
+    IntegerToString(number, string, 10);
 }
 
 void StringCat(const char* source, char* target, uint32_t maxLength)
@@ -66,7 +65,7 @@ void StringCat(const char* source, char* target, uint32_t maxLength)
 
 // The following function came from
 // https://stackoverflow.com/questions/8257714/how-to-convert-an-int-to-string-in-c
-char* itoa (int32_t value, char *result, int32_t base)
+char* IntegerToString(int32_t value, char *result, int32_t base)
 {
     // check that the base if valid
     if (base < 2 || base > 36) { *result = '\0'; return result; }
