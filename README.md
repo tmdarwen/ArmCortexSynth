@@ -35,7 +35,14 @@ Video Demo: <https://youtu.be/UTizmNIYIBM>
 
  
 
-**Building on Windows**
+**Tests**
+
+The unit tests are separate projects that build and run on a typical desktop platform.  For information on how to build and run tests please see [this document](Documentation/Tests.md).
+
+ 
+
+
+**Steps for Building on Windows**
 
 1.   If you haven't already done so, downloaded and install [TivaWare for C Series](http://www.ti.com/tool/sw-tm4c).
 
