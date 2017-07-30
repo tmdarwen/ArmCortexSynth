@@ -1,7 +1,7 @@
 ArmCortexSynth
 ==============
 
-A fully functioning MIDI synthesizer based on an ARM Cortex-M4F processor ([Tiva LaunchPad TM4C123G](http://www.ti.com/tool/ek-tm4c123gxl)).  
+A fully functioning MIDI synthesizer using an ARM Cortex-M4F processor ([Tiva LaunchPad TM4C123G](http://www.ti.com/tool/ek-tm4c123gxl)).  
 Video Demo: <https://youtu.be/UTizmNIYIBM>
 
  
