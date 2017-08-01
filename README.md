@@ -68,7 +68,7 @@ The unit tests are separate projects that build and run on a typical desktop pla
 
 -   Currently, the only (easy) way to build this is through TI's Code Composer Studio (see instructions above).  Ideally, I would have functionality in place to allow a build tool (CMake?) to generate a makefile or other project files.
 
--   Doesn't currently use [CMSIS](https://developer.arm.com/embedded/cmsis).  With this project I was most interested in working directly with the MCU and therefore interfaces directly with the TM4C123G registers.
+-   Doesn't currently use [CMSIS](https://developer.arm.com/embedded/cmsis).  With this project I was most interested in working directly with the MCU and therefore interface directly with the TM4C123G registers.
 
  
 
