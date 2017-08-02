@@ -41,13 +41,13 @@ TEST_CASE("Audio Generation")
 
 	SECTION("Sawtooth Audio C3")
 	{
-		auto oscillator1{audioMixer.GetOscillator1()};
-		auto oscillator2{audioMixer.GetOscillator2()};
-		auto oscillator3{audioMixer.GetOscillator3()};
+		Oscillator& oscillator1{audioMixer.GetOscillator1()};
+		Oscillator& oscillator2{audioMixer.GetOscillator2()};
+		Oscillator& oscillator3{audioMixer.GetOscillator3()};
 
-		oscillator1->SetWaveformType(Sawtooth);
-		oscillator2->SetWaveformType(Sawtooth);
-		oscillator3->SetWaveformType(Sawtooth);
+		oscillator1.SetWaveformType(Sawtooth);
+		oscillator2.SetWaveformType(Sawtooth);
+		oscillator3.SetWaveformType(Sawtooth);
 
 		audioMixer.SetMIDINote(c3NoteIndex);
 		audioMixer.GetAudioData(audioData, samplesPerAudioSnippet);
@@ -57,15 +57,15 @@ TEST_CASE("Audio Generation")
 
 	SECTION("Sawtooth Octave Audio C3")
 	{
-		auto oscillator1{audioMixer.GetOscillator1()};
-		auto oscillator2{audioMixer.GetOscillator2()};
-		auto oscillator3{audioMixer.GetOscillator3()};
+		Oscillator& oscillator1{audioMixer.GetOscillator1()};
+		Oscillator& oscillator2{audioMixer.GetOscillator2()};
+		Oscillator& oscillator3{audioMixer.GetOscillator3()};
 
-		oscillator1->SetWaveformType(Sawtooth);
-		oscillator2->SetWaveformType(Sawtooth);
-		oscillator2->SetSemitone(12);
-		oscillator3->SetWaveformType(Sawtooth);
-		oscillator3->SetSemitone(-12);
+		oscillator1.SetWaveformType(Sawtooth);
+		oscillator2.SetWaveformType(Sawtooth);
+		oscillator2.SetSemitone(12);
+		oscillator3.SetWaveformType(Sawtooth);
+		oscillator3.SetSemitone(-12);
 
 		audioMixer.SetMIDINote(c3NoteIndex);
 		audioMixer.GetAudioData(audioData, samplesPerAudioSnippet);
@@ -75,12 +75,12 @@ TEST_CASE("Audio Generation")
 
 	SECTION("Square Fifths Audio C3")
 	{
-		auto oscillator1{audioMixer.GetOscillator1()};
-		auto oscillator2{audioMixer.GetOscillator2()};
-		auto oscillator3{audioMixer.GetOscillator3()};
+		Oscillator& oscillator1{audioMixer.GetOscillator1()};
+		Oscillator& oscillator2{audioMixer.GetOscillator2()};
+		Oscillator& oscillator3{audioMixer.GetOscillator3()};
 
-		oscillator2->SetSemitone(7);
-		oscillator3->SetSemitone(7);
+		oscillator2.SetSemitone(7);
+		oscillator3.SetSemitone(7);
 
 		audioMixer.SetMIDINote(c3NoteIndex);
 		audioMixer.GetAudioData(audioData, samplesPerAudioSnippet);

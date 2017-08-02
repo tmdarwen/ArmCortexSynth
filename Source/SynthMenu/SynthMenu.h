@@ -39,7 +39,8 @@
 class SynthMenu
 {
     public:
-        SynthMenu(MenuOutput* menuOutput, Oscillator* oscillators[3]);
+        //SynthMenu(MenuOutput* menuOutput, Oscillator& oscillators[3]);
+        SynthMenu(MenuOutput* menuOutput, Oscillator& oscillator1, Oscillator& oscillator2, Oscillator& oscillator3);
         void HandleAction(MenuSystem::Action action);
 
     private:

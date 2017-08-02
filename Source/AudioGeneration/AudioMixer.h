@@ -35,9 +35,10 @@ class AudioMixer
 {
     public:
         AudioMixer();
-        Oscillator* GetOscillator1();
-        Oscillator* GetOscillator2();
-        Oscillator* GetOscillator3();
+
+        Oscillator& GetOscillator1();
+        Oscillator& GetOscillator2();
+        Oscillator& GetOscillator3();
 
         void SetMIDINote(uint8_t midiNoteIndex);
         void GetAudioData(uint16_t buffer[], uint32_t bufferSampleSize);
@@ -55,5 +56,5 @@ class AudioMixer
         static const uint8_t NO_MIDI_NOTE_ = 0;
         float noteFrequencyTable_[MIDI_NOTE_COUNT_];
 
-        uint64_t sampleCount_;
+        uint32_t sampleCount_;
 };

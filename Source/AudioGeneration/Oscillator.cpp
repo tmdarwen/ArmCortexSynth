@@ -71,7 +71,7 @@ void Oscillator::SetLevel(uint8_t level)
     level_ = level;
 }
 
-void Oscillator::SetCent(uint8_t cent)
+void Oscillator::SetCent(int8_t cent)
 {
     cent_ = cent;
 }
@@ -81,7 +81,7 @@ void Oscillator::SetSemitone(int8_t semitone)
     semitone_ = semitone;
 }
 
-void Oscillator::MixInOscillatorAudio(uint16_t buffer[], uint32_t bufferSampleSize, uint8_t totalOscillatorCount, uint8_t noteIndex, uint64_t currentSample)
+void Oscillator::MixInOscillatorAudio(uint16_t buffer[], uint32_t bufferSampleSize, uint8_t totalOscillatorCount, uint8_t noteIndex, uint32_t currentSample)
 {
     float samplesForOneCycle;
     float cyclePercent;
@@ -96,7 +96,7 @@ void Oscillator::MixInOscillatorAudio(uint16_t buffer[], uint32_t bufferSampleSi
     peakLevel = 0xFFFF * ((float)level_ / 10.0f) / (float)totalOscillatorCount;
     samplesForOneCycle = GetSamplesPerCycle(noteIndex);
 
-    for(uint32_t i = 0; i < bufferSampleSize; ++i)
+    for(i = 0; i < bufferSampleSize; ++i)
     {
         cyclePercent = fmodf(static_cast<float>(currentSample + i), samplesForOneCycle) / samplesForOneCycle;
 

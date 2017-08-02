@@ -23,12 +23,7 @@ TEST_CASE("Menu System")
     Oscillator oscillator2(Square, 10, 8, 0);
     Oscillator oscillator3(Square, 10, -8, 0);
 	
-    Oscillator* oscillators[3];
-    oscillators[0] = &oscillator1;
-    oscillators[1] = &oscillator2;
-    oscillators[2] = &oscillator3;
-
-    SynthMenu synthMenu(&testOutput, oscillators);
+    SynthMenu synthMenu(&testOutput, oscillator1, oscillator2, oscillator3);
 
 	SECTION("Initial Menu")
 	{

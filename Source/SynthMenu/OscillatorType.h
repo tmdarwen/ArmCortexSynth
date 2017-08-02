@@ -34,7 +34,7 @@ class Oscillator;
 class OscillatorType : public MenuItemValue
 {
 	public:
-        OscillatorType(Oscillator* oscillator_);
+        OscillatorType(Oscillator& oscillator_);
 
 		void Increment();
 		void Decrement();
@@ -42,5 +42,5 @@ class OscillatorType : public MenuItemValue
 		WaveformType GetType();
 		
 	private:
-		Oscillator* oscillator_;
+		Oscillator& oscillator_;
 };

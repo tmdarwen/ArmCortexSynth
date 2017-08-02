@@ -28,34 +28,34 @@
 #include "Utilities/StringUtilities.h"
 #include "AudioGeneration/Oscillator.h"
 
-OscillatorCent::OscillatorCent(Oscillator* oscillator) : oscillator_(oscillator) { }
+OscillatorCent::OscillatorCent(Oscillator& oscillator) : oscillator_(oscillator) { }
 
 void OscillatorCent::Increment()
 {
-	if(oscillator_->GetCent() < MAX_VALUE_)
+	if(oscillator_.GetCent() < MAX_VALUE_)
 	{
-	    oscillator_->SetCent(oscillator_->GetCent() + 1);
+	    oscillator_.SetCent(oscillator_.GetCent() + 1);
 	}
 }
 
 void OscillatorCent::Decrement()
 {
-	if(oscillator_->GetCent() > MIN_VALUE_)
+	if(oscillator_.GetCent() > MIN_VALUE_)
 	{
-        oscillator_->SetCent(oscillator_->GetCent() - 1);
+        oscillator_.SetCent(oscillator_.GetCent() - 1);
 	}
 }
 
 const char* OscillatorCent::GetValueAsText()
 {
-    if(oscillator_->GetCent() > 0)
+    if(oscillator_.GetCent() > 0)
     {
         text_[0] = '+';
-        NumberToString(oscillator_->GetCent(), &(text_[1]));
+        NumberToString(oscillator_.GetCent(), &(text_[1]));
     }
     else
     {
-        NumberToString(oscillator_->GetCent(), text_);
+        NumberToString(oscillator_.GetCent(), text_);
     }
     return text_;
 }

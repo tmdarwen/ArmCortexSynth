@@ -34,7 +34,7 @@ class Oscillator;
 class OscillatorCent : public MenuItemValue
 {
 	public:
-        OscillatorCent(Oscillator* oscillator);
+        OscillatorCent(Oscillator& oscillator);
 		void Increment();
 		void Decrement();
 		const char* GetValueAsText();
@@ -46,6 +46,6 @@ class OscillatorCent : public MenuItemValue
         static const int8_t ADJUSTMENT_VALUE_ = 1;
 		static const uint8_t TEXT_LENGTH_ = 5;
 
-		Oscillator* oscillator_;
+		Oscillator& oscillator_;
 		char text_[TEXT_LENGTH_];
 };

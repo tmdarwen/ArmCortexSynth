@@ -26,11 +26,12 @@
 
 #include "SynthMenu/SynthMenu.h"
 
-SynthMenu::SynthMenu(MenuOutput* menuOutput, Oscillator* oscillators[3]) :
+//SynthMenu::SynthMenu(MenuOutput* menuOutput, Oscillator& oscillators[3]) :
+SynthMenu::SynthMenu(MenuOutput* menuOutput, Oscillator& oscillator1, Oscillator& oscillator2, Oscillator& oscillator3) :
     menuSystem_(&mainMenu_, menuOutput),
-    oscillator1Type_(oscillators[0]), oscillator1Level_(oscillators[0]), oscillator1Cent_(oscillators[0]), oscillator1Semitone_(oscillators[0]),
-    oscillator2Type_(oscillators[1]), oscillator2Level_(oscillators[1]), oscillator2Cent_(oscillators[1]), oscillator2Semitone_(oscillators[1]),
-    oscillator3Type_(oscillators[2]), oscillator3Level_(oscillators[2]), oscillator3Cent_(oscillators[2]), oscillator3Semitone_(oscillators[2])
+    oscillator1Type_(oscillator1), oscillator1Level_(oscillator1), oscillator1Cent_(oscillator1), oscillator1Semitone_(oscillator1),
+    oscillator2Type_(oscillator2), oscillator2Level_(oscillator2), oscillator2Cent_(oscillator2), oscillator2Semitone_(oscillator2),
+    oscillator3Type_(oscillator3), oscillator3Level_(oscillator3), oscillator3Cent_(oscillator3), oscillator3Semitone_(oscillator3)
 {
     oscillator1Menu_.AddItem(MenuItem("Waveform", &oscillator1Type_));
     oscillator1Menu_.AddItem(MenuItem("Level", &oscillator1Level_));

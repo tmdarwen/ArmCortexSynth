@@ -89,25 +89,11 @@ void main()
     AudioMixer audioMixer;
     pAudioMixer = &audioMixer;
 
-    Logger::PrintStringWithNewLine("Initializing Oscillators");
-    Oscillator oscillator1(Square, 10, 0, 0);
-    Oscillator oscillator2(Square, 10, 8, 0);
-    Oscillator oscillator3(Square, 10, -8, 0);
-
-    audioMixer.SetOscillator1(&oscillator1);
-    audioMixer.SetOscillator2(&oscillator2);
-    audioMixer.SetOscillator3(&oscillator3);
-
-
     Logger::PrintStringWithNewLine("Initializing LCD Menu");
     LCDOutput lcdOutput;
 
     Logger::PrintStringWithNewLine("Initializing Synth Menu");
-    Oscillator* oscillators[3];
-    oscillators[0] = audioMixer.GetOscillator1();
-    oscillators[1] = audioMixer.GetOscillator2();
-    oscillators[2] = audioMixer.GetOscillator3();
-    SynthMenu synthMenu(&lcdOutput, oscillators);
+    SynthMenu synthMenu(&lcdOutput, audioMixer.GetOscillator1(), audioMixer.GetOscillator2(), audioMixer.GetOscillator3());
 
     Logger::PrintStringWithNewLine("Initializing Synth Menu Inputs");
     SynthMenuInput synthMenuInput(&synthMenu);

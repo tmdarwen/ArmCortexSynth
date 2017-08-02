@@ -42,19 +42,19 @@ void AudioMixer::SetupDefaultOscillatorValues()
 	oscillator3_.SetCent(-8);
 }
 
-Oscillator* AudioMixer::GetOscillator1()
+Oscillator& AudioMixer::GetOscillator1()
 {
-    return &oscillator1_;
+    return oscillator1_;
 }
 
-Oscillator* AudioMixer::GetOscillator2()
+Oscillator& AudioMixer::GetOscillator2()
 {
-    return &oscillator2_;
+    return oscillator2_;
 }
 
-Oscillator* AudioMixer::GetOscillator3()
+Oscillator& AudioMixer::GetOscillator3()
 {
-    return &oscillator3_;
+    return oscillator3_;
 }
 
 void AudioMixer::SetMIDINote(uint8_t midiNoteIndex)
@@ -82,15 +82,16 @@ uint8_t AudioMixer::GetActiveOscillatorCount()
 
 void AudioMixer::GetAudioData(uint16_t buffer[], uint32_t bufferSampleSize)
 {
-    if(midiNoteIndex_ == NO_MIDI_NOTE_)
-    {
-        return;
-    }
-
     // Silent the audio buffer before adding audio to it through the oscillators
 	for(unsigned int i = 0 ; i < bufferSampleSize; ++i)
     {
         buffer[i] = 0;
+    }
+
+	// If no note is being played, no audio needed
+    if(midiNoteIndex_ == NO_MIDI_NOTE_)
+    {
+        return;
     }
 
     uint8_t totalOscillatorCount = GetActiveOscillatorCount();

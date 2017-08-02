@@ -28,26 +28,26 @@
 #include "Utilities/StringUtilities.h"
 #include "AudioGeneration/Oscillator.h"
 
-OscillatorLevel::OscillatorLevel(Oscillator* oscillator) : oscillator_(oscillator) { }
+OscillatorLevel::OscillatorLevel(Oscillator& oscillator) : oscillator_(oscillator) { }
 
 void OscillatorLevel::Increment()
 {
-    if(oscillator_->GetLevel() < MAX_VALUE_)
+    if(oscillator_.GetLevel() < MAX_VALUE_)
     {
-        oscillator_->SetLevel(oscillator_->GetLevel() + 1);
+        oscillator_.SetLevel(oscillator_.GetLevel() + 1);
     }
 }
 
 void OscillatorLevel::Decrement()
 {
-    if(oscillator_->GetLevel() > MIN_VALUE_)
+    if(oscillator_.GetLevel() > MIN_VALUE_)
     {
-        oscillator_->SetLevel(oscillator_->GetLevel() - 1);
+        oscillator_.SetLevel(oscillator_.GetLevel() - 1);
     }
 }
 
 const char* OscillatorLevel::GetValueAsText()
 {
-    NumberToString(oscillator_->GetLevel(), text_);
+    NumberToString(oscillator_.GetLevel(), text_);
     return text_;
 }

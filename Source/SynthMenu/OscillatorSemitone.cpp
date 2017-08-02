@@ -28,34 +28,34 @@
 #include "Utilities/StringUtilities.h"
 #include "AudioGeneration/Oscillator.h"
 
-OscillatorSemitone::OscillatorSemitone(Oscillator* oscillator) : oscillator_(oscillator) { }
+OscillatorSemitone::OscillatorSemitone(Oscillator& oscillator) : oscillator_(oscillator) { }
 
 void OscillatorSemitone::Increment()
 {
-    if(oscillator_->GetSemitone() < MAX_VALUE_)
+    if(oscillator_.GetSemitone() < MAX_VALUE_)
     {
-        oscillator_->SetSemitone(oscillator_->GetSemitone() + 1);
+        oscillator_.SetSemitone(oscillator_.GetSemitone() + 1);
     }
 }
 
 void OscillatorSemitone::Decrement()
 {
-    if(oscillator_->GetSemitone() > MIN_VALUE_)
+    if(oscillator_.GetSemitone() > MIN_VALUE_)
     {
-        oscillator_->SetSemitone(oscillator_->GetSemitone() - 1);
+        oscillator_.SetSemitone(oscillator_.GetSemitone() - 1);
     }
 }
 
 const char* OscillatorSemitone::GetValueAsText()
 {
-    if(oscillator_->GetSemitone() > 0)
+    if(oscillator_.GetSemitone() > 0)
     {
         text_[0] = '+';
-        NumberToString(oscillator_->GetSemitone(), &(text_[1]));
+        NumberToString(oscillator_.GetSemitone(), &(text_[1]));
     }
     else
     {
-        NumberToString(oscillator_->GetSemitone(), text_);
+        NumberToString(oscillator_.GetSemitone(), text_);
     }
     return text_;
 }

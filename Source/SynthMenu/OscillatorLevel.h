@@ -34,7 +34,7 @@ class Oscillator;
 class OscillatorLevel : public MenuItemValue
 {
 	public:
-        OscillatorLevel(Oscillator* oscillator);
+        OscillatorLevel(Oscillator& oscillator);
 		void Increment();
 		void Decrement();
 		const char* GetValueAsText();
@@ -46,6 +46,6 @@ class OscillatorLevel : public MenuItemValue
         static const uint16_t ADJUSTMENT_VALUE_ = 1;
         static const uint8_t TEXT_LENGTH_ = 3;
 
-        Oscillator* oscillator_;
+        Oscillator& oscillator_;
 		char text_[3];
 };

@@ -27,30 +27,30 @@
 #include "SynthMenu/OscillatorType.h"
 #include "AudioGeneration/Oscillator.h"
 
-OscillatorType::OscillatorType(Oscillator* oscillator) : oscillator_(oscillator) { }
+OscillatorType::OscillatorType(Oscillator& oscillator) : oscillator_(oscillator) { }
 
 void OscillatorType::Increment()
 {
-    if(oscillator_->GetWaveformType() == None) { oscillator_->SetWaveformType(Sawtooth); }
-    else if(oscillator_->GetWaveformType() == Square) { oscillator_->SetWaveformType(None); }
-    else if(oscillator_->GetWaveformType() == Sawtooth) { oscillator_->SetWaveformType(Square); }
+    if(oscillator_.GetWaveformType() == None) { oscillator_.SetWaveformType(Sawtooth); }
+    else if(oscillator_.GetWaveformType() == Square) { oscillator_.SetWaveformType(None); }
+    else if(oscillator_.GetWaveformType() == Sawtooth) { oscillator_.SetWaveformType(Square); }
 }
 
 void OscillatorType::Decrement()
 {
-    if(oscillator_->GetWaveformType() == None) { oscillator_->SetWaveformType(Square); }
-    else if(oscillator_->GetWaveformType() == Square) { oscillator_->SetWaveformType(Sawtooth); }
-    else if(oscillator_->GetWaveformType() == Sawtooth) { oscillator_->SetWaveformType(None); }
+    if(oscillator_.GetWaveformType() == None) { oscillator_.SetWaveformType(Square); }
+    else if(oscillator_.GetWaveformType() == Square) { oscillator_.SetWaveformType(Sawtooth); }
+    else if(oscillator_.GetWaveformType() == Sawtooth) { oscillator_.SetWaveformType(None); }
 }
 
 const char* OscillatorType::GetValueAsText()
 {
-    if(oscillator_->GetWaveformType() == None) { return "None"; }
-    else if(oscillator_->GetWaveformType() == Square) { return "Square"; }
+    if(oscillator_.GetWaveformType() == None) { return "None"; }
+    else if(oscillator_.GetWaveformType() == Square) { return "Square"; }
     return "Sawtooth";
 }
 
 WaveformType OscillatorType::GetType()
 {
-    return oscillator_->GetWaveformType();
+    return oscillator_.GetWaveformType();
 }

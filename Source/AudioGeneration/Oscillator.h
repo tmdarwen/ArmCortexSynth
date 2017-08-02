@@ -35,7 +35,7 @@ class Oscillator
         Oscillator();
         Oscillator(WaveformType waveformType, uint8_t level, int8_t cent, int8_t semitone);
 
-        void MixInOscillatorAudio(uint16_t buffer[], uint32_t bufferSampleSize, uint8_t totalOscillatorCount, uint8_t noteIndex, uint64_t currentSample);
+        void MixInOscillatorAudio(uint16_t buffer[], uint32_t bufferSampleSize, uint8_t totalOscillatorCount, uint8_t noteIndex, uint32_t currentSample);
 
         WaveformType GetWaveformType();
         uint8_t GetLevel();
@@ -44,7 +44,7 @@ class Oscillator
 
         void SetWaveformType(WaveformType waveformType);
         void SetLevel(uint8_t level);
-        void SetCent(uint8_t cent);
+        void SetCent(int8_t cent);
         void SetSemitone(int8_t semitone);
 
     private:
