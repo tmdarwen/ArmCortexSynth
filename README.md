@@ -35,6 +35,14 @@ Video Demo: <https://youtu.be/UTizmNIYIBM>
 
  
 
+
+**Important**
+
+For historical compatibility reasons it seems TI has tied two pins on port B of the TM4C123G directly to port D.  Please see [this TM4C123G support forum thread](https://e2e.ti.com/support/microcontrollers/tiva_arm/f/908/t/605750) for how to effectively deal with this.
+
+ 
+
+
 **Tests**
 
 The unit tests are separate projects that build and run on a typical desktop platform.  For information on how to build and run tests please see [this document](Documentation/Tests.md).
