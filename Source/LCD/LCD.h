@@ -51,9 +51,9 @@ class LCD
 		void WriteText(const char*);
 		void WriteChar(uint8_t row, uint8_t column, char theChar);
 
-        void ClearScreenBlocking();
-        void WriteTextBlocking(const char*);
-        void WriteCharBlocking(uint8_t row, uint8_t column, char theChar);
+		void ClearScreenBlocking();
+		void WriteTextBlocking(const char*);
+		void WriteCharBlocking(uint8_t row, uint8_t column, char theChar);
 
 		void Process(uint64_t ticks);
 
