@@ -51,12 +51,12 @@ void InitializeNoteFrequencyTable()
 
 float GetFrequency(uint8_t noteIndex)
 {
-	if(noteIndex > indexCount)
-	{
-		// I keep error handling simple here and just return a frequency of zero if the given 
-		// note index is out of range.
-		return 0.0;
-	}
+    if(noteIndex > indexCount)
+    {
+        // I keep error handling simple here and just return a frequency of zero if the given 
+        // note index is out of range.
+        return 0.0;
+    }
 
     return noteFrequencyTable_[noteIndex];
 }

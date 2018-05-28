@@ -44,7 +44,7 @@ class AudioMixer
         void GetAudioData(uint16_t buffer[], uint32_t bufferSampleSize);
 
     private:
-		void SetupDefaultOscillatorValues();
+        void SetupDefaultOscillatorValues();
         uint8_t GetActiveOscillatorCount();
 
         Oscillator oscillator1_;
