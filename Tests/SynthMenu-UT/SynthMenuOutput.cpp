@@ -4,15 +4,15 @@
 
 void SynthMenuOutput::SetText(uint8_t line, const char* text)
 {
-	StringCopy(text, text_[line], COLUMNS_);
+    StringCopy(text, text_[line], COLUMNS_);
 }
 
 const char* SynthMenuOutput::GetTextLine(unsigned char line)
 {
-	if(line >= ROWS_)
-	{
-		return NULL;
-	}
+    if(line >= ROWS_)
+    {
+        return NULL;
+    }
 
-	return text_[line];
+    return text_[line];
 }
