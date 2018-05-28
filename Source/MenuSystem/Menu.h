@@ -31,20 +31,20 @@
 
 class Menu
 {
-	public:
-		static const uint8_t MENU_ROWS = 4;
+    public:
+        static const uint8_t MENU_ROWS = 4;
 
-		Menu();
+        Menu();
 
-		void AddItem(MenuItem menuItem);
-		MenuItem GetItem(uint8_t row);
-		const char* GetMenuItemText(uint8_t row);
-		uint8_t GetRowCount();
-		void SetParentMenu(Menu* parentMenu);
-		Menu* GetParentMenu();
+        void AddItem(MenuItem menuItem);
+        MenuItem GetItem(uint8_t row);
+        const char* GetMenuItemText(uint8_t row);
+        uint8_t GetRowCount();
+        void SetParentMenu(Menu* parentMenu);
+        Menu* GetParentMenu();
 
-	private:
-		uint8_t size_;
-		MenuItem menuItems_[MENU_ROWS];
-		Menu* parentMenu_;
+    private:
+        uint8_t size_;
+        MenuItem menuItems_[MENU_ROWS];
+        Menu* parentMenu_;
 };

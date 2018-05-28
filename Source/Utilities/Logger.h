@@ -28,7 +28,7 @@
 
 class Logger
 {
-	public:
+    public:
         static void PrintString(const char* string);
         static void PrintStringWithNewLine(const char* string);
         static void PrintNewLine();

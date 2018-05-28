@@ -34,19 +34,19 @@ template <typename T, uint32_t size>
 class FIFO
 {
 public:
-	FIFO();
-	void Push(T item);
-	T Pop();
-	T Peek();
+    FIFO();
+    void Push(T item);
+    T Pop();
+    T Peek();
 
-	uint32_t GetCount();
-	uint32_t GetMaxSize();
+    uint32_t GetCount();
+    uint32_t GetMaxSize();
 
 private:
-	T data_[size];
-	uint32_t count_;
-	uint32_t headIndex_;
-	uint32_t tailIndex_;
+    T data_[size];
+    uint32_t count_;
+    uint32_t headIndex_;
+    uint32_t tailIndex_;
 };
 
 template <typename T, uint32_t size>
@@ -55,41 +55,41 @@ FIFO<T, size>::FIFO() : count_(0), headIndex_(0), tailIndex_(0) { }
 template <typename T, uint32_t size>
 void FIFO<T, size>::Push(T item)
 {
-	if (count_ == size)
-	{
-		// Queue is full, nothing to do
-		return;
-	}
+    if (count_ == size)
+    {
+        // Queue is full, nothing to do
+        return;
+    }
 
-	data_[tailIndex_] = item;
-	++tailIndex_;
-	if (tailIndex_ == size)
-	{
-		tailIndex_ = 0;
-	}
+    data_[tailIndex_] = item;
+    ++tailIndex_;
+    if (tailIndex_ == size)
+    {
+        tailIndex_ = 0;
+    }
 
-	++count_;
+    ++count_;
 }
 
 template <typename T, uint32_t size>
 T FIFO<T, size>::Pop()
 {
-	if (size == 0)
-	{
-		// Noting to pop
-		return T();
-	}
+    if (size == 0)
+    {
+        // Noting to pop
+        return T();
+    }
 
-	T returnValue(data_[headIndex_]);
-	++headIndex_;
-	if (headIndex_ == size)
-	{
-		headIndex_ = 0;
-	}
+    T returnValue(data_[headIndex_]);
+    ++headIndex_;
+    if (headIndex_ == size)
+    {
+        headIndex_ = 0;
+    }
 
-	--count_;
+    --count_;
 
-	return returnValue;
+    return returnValue;
 }
 
 
@@ -108,11 +108,11 @@ T FIFO<T, size>::Peek()
 template <typename T, uint32_t size>
 uint32_t FIFO<T, size>::GetCount()
 {
-	return count_;
+    return count_;
 }
 
 template <typename T, uint32_t size>
 uint32_t FIFO<T, size>::GetMaxSize()
 {
-	return size;
+    return size;
 }

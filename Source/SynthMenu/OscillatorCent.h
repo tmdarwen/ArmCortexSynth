@@ -33,19 +33,19 @@ class Oscillator;
 
 class OscillatorCent : public MenuItemValue
 {
-	public:
+    public:
         OscillatorCent(Oscillator& oscillator);
-		void Increment();
-		void Decrement();
-		const char* GetValueAsText();
-		
-	private:
+        void Increment();
+        void Decrement();
+        const char* GetValueAsText();
+        
+    private:
         static const int8_t MIN_VALUE_ = -100;
         static const int8_t MAX_VALUE_ = 100;
         static const int8_t DEFAULT_VALUE_ = 0;
         static const int8_t ADJUSTMENT_VALUE_ = 1;
-		static const uint8_t TEXT_LENGTH_ = 5;
+        static const uint8_t TEXT_LENGTH_ = 5;
 
-		Oscillator& oscillator_;
-		char text_[TEXT_LENGTH_];
+        Oscillator& oscillator_;
+        char text_[TEXT_LENGTH_];
 };

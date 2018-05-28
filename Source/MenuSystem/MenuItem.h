@@ -33,22 +33,22 @@ class MenuItemValue;
 
 class MenuItem
 {
-	public:
-		static const uint8_t TEXT_SIZE = 20;
-		static const uint8_t NULL_CHAR_SIZE = 1;
+    public:
+        static const uint8_t TEXT_SIZE = 20;
+        static const uint8_t NULL_CHAR_SIZE = 1;
 
-		MenuItem();
-		MenuItem(const char* text, Menu* subMenu);
-		MenuItem(const char* text, MenuItemValue* menuItemValue);
+        MenuItem();
+        MenuItem(const char* text, Menu* subMenu);
+        MenuItem(const char* text, MenuItemValue* menuItemValue);
 
-		const char* GetText();
-		void Increment();
-		void Decrement();
-		Menu* GetSubMenu();
-		MenuItemValue* GetMenuItemValue();
+        const char* GetText();
+        void Increment();
+        void Decrement();
+        Menu* GetSubMenu();
+        MenuItemValue* GetMenuItemValue();
 
-	private:
-		char text_[TEXT_SIZE + NULL_CHAR_SIZE];	
-		Menu* subMenu_;
-		MenuItemValue* menuItemValue_;
+    private:
+        char text_[TEXT_SIZE + NULL_CHAR_SIZE];    
+        Menu* subMenu_;
+        MenuItemValue* menuItemValue_;
 };

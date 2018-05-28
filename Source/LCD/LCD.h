@@ -29,46 +29,46 @@
 
 class LCDAction
 {
-	public:
-		enum Type { Empty, Command, Write, Wait};
-		LCDAction() : type_(Empty), value_(0) { }
-		LCDAction(Type type, int16_t value) : type_(type), value_(value) { }
+    public:
+        enum Type { Empty, Command, Write, Wait};
+        LCDAction() : type_(Empty), value_(0) { }
+        LCDAction(Type type, int16_t value) : type_(type), value_(value) { }
 
-		Type GetType() { return type_; }
-		int16_t GetValue() { return value_; }
+        Type GetType() { return type_; }
+        int16_t GetValue() { return value_; }
 
-	private:
-		Type type_;
-		int16_t value_; // Holds the command, the write char or the delay amount
+    private:
+        Type type_;
+        int16_t value_; // Holds the command, the write char or the delay amount
 };
 
 class LCD
 {
-	public:
-		LCD();
+    public:
+        LCD();
 
-		void ClearScreen();
-		void WriteText(const char*);
-		void WriteChar(uint8_t row, uint8_t column, char theChar);
+        void ClearScreen();
+        void WriteText(const char*);
+        void WriteChar(uint8_t row, uint8_t column, char theChar);
 
-		void ClearScreenBlocking();
-		void WriteTextBlocking(const char*);
-		void WriteCharBlocking(uint8_t row, uint8_t column, char theChar);
+        void ClearScreenBlocking();
+        void WriteTextBlocking(const char*);
+        void WriteCharBlocking(uint8_t row, uint8_t column, char theChar);
 
-		void Process(uint64_t ticks);
+        void Process(uint64_t ticks);
 
-	private:
-		void InitSysTick();
-		void InitPinsForDigitalOutput();
-		void DatasheetInit();
+    private:
+        void InitSysTick();
+        void InitPinsForDigitalOutput();
+        void DatasheetInit();
 
-		void Command(char i);
-		void Write(char i);
-		
-		void SpinDelay(uint32_t ticks);
+        void Command(char i);
+        void Write(char i);
+        
+        void SpinDelay(uint32_t ticks);
 
-		static const uint16_t FIFO_MAX_SIZE_ = 256;
-		FIFO<LCDAction, FIFO_MAX_SIZE_> fifo_;
+        static const uint16_t FIFO_MAX_SIZE_ = 256;
+        FIFO<LCDAction, FIFO_MAX_SIZE_> fifo_;
 
-		uint64_t lastExecutedActionTickCount_;
+        uint64_t lastExecutedActionTickCount_;
 };

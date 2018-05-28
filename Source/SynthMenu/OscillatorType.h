@@ -33,14 +33,14 @@ class Oscillator;
 
 class OscillatorType : public MenuItemValue
 {
-	public:
+    public:
         OscillatorType(Oscillator& oscillator_);
 
-		void Increment();
-		void Decrement();
-		const char* GetValueAsText();
-		WaveformType GetType();
-		
-	private:
-		Oscillator& oscillator_;
+        void Increment();
+        void Decrement();
+        const char* GetValueAsText();
+        WaveformType GetType();
+        
+    private:
+        Oscillator& oscillator_;
 };

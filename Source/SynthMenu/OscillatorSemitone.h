@@ -33,13 +33,13 @@ class Oscillator;
 
 class OscillatorSemitone : public MenuItemValue
 {
-	public:
+    public:
         OscillatorSemitone(Oscillator& oscillator);
-		void Increment();
-		void Decrement();
-		const char* GetValueAsText();
-		
-	private:
+        void Increment();
+        void Decrement();
+        const char* GetValueAsText();
+        
+    private:
         static const int8_t MIN_VALUE_ = -12;
         static const int8_t MAX_VALUE_ = 12;
         static const int8_t DEFAULT_VALUE_ = 0;
@@ -47,5 +47,5 @@ class OscillatorSemitone : public MenuItemValue
         static const uint8_t TEXT_LENGTH_ = 5;
 
         Oscillator& oscillator_;
-		char text_[TEXT_LENGTH_];
+        char text_[TEXT_LENGTH_];
 };

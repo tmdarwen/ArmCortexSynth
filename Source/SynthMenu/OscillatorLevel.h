@@ -33,13 +33,13 @@ class Oscillator;
 
 class OscillatorLevel : public MenuItemValue
 {
-	public:
+    public:
         OscillatorLevel(Oscillator& oscillator);
-		void Increment();
-		void Decrement();
-		const char* GetValueAsText();
-		
-	private:
+        void Increment();
+        void Decrement();
+        const char* GetValueAsText();
+        
+    private:
         static const uint16_t MIN_VALUE_ = 0;
         static const uint16_t MAX_VALUE_ = 10;
         static const uint16_t DEFAULT_VALUE_ = 5;
@@ -47,5 +47,5 @@ class OscillatorLevel : public MenuItemValue
         static const uint8_t TEXT_LENGTH_ = 3;
 
         Oscillator& oscillator_;
-		char text_[3];
+        char text_[3];
 };

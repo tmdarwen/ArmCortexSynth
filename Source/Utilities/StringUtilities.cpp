@@ -32,13 +32,13 @@ char ToHex(uint32_t i) { return i <= 9 ? ('0' + i) : ('A' - 10 + i); }
 void StringCopy(const char* source, char* target, uint32_t maxLength)
 {
     uint32_t counter = 0;
-	while(counter < maxLength && source[counter])
-	{
-		target[counter] = source[counter];	
-		++counter;
-	}
+    while(counter < maxLength && source[counter])
+    {
+        target[counter] = source[counter];    
+        ++counter;
+    }
 
-	target[counter] = '\0';  // Place string terminator at the end
+    target[counter] = '\0';  // Place string terminator at the end
 }
 
 unsigned int StringLength(const char* theString)

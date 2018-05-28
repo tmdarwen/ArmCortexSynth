@@ -30,40 +30,40 @@ Menu::Menu() : size_(0), parentMenu_(0) { }
 
 void Menu::AddItem(MenuItem menuItem)
 {
-	menuItems_[size_] = menuItem;
-	if(menuItems_[size_].GetSubMenu())
-	{
-		menuItems_[size_].GetSubMenu()->SetParentMenu(this);
-	}
-	++size_;
+menuItems_[size_] = menuItem;
+if(menuItems_[size_].GetSubMenu())
+{
+    menuItems_[size_].GetSubMenu()->SetParentMenu(this);
+}
+++size_;
 }
 
 MenuItem Menu::GetItem(uint8_t row)
 {
-	return menuItems_[row];	
+return menuItems_[row];    
 }
 
 const char* Menu::GetMenuItemText(uint8_t row)
 {
-	if(row >= MENU_ROWS)
-	{
-		return 0;			
-	}
+if(row >= MENU_ROWS)
+{
+    return 0;            
+}
 
-	return menuItems_[row].GetText();
+return menuItems_[row].GetText();
 }
 
 uint8_t Menu::GetRowCount()
 {
-	return size_;	
+return size_;    
 }
 
 void Menu::SetParentMenu(Menu* parentMenu)
 {
-	parentMenu_ = parentMenu;	
+parentMenu_ = parentMenu;    
 }
 
 Menu* Menu::GetParentMenu()
 {
-	return parentMenu_;
+return parentMenu_;
 }

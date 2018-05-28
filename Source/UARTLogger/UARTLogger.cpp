@@ -84,18 +84,18 @@ UARTLogger::UARTLogger() : systemClockFrequency_(DEFAULT_SYSTEM_CLOCK_FREQUENCY_
 
 void UARTLogger::TransmitCharacter(char dataChar)
 {
-	// See pg 911, bit 5 - we add data into the transmit FIFO as long as it's not full
+    // See pg 911, bit 5 - we add data into the transmit FIFO as long as it's not full
     while((UART0_FR_R & (1<<5)) != 0) { }
     UART0_DR_R = dataChar;
 }
 
 void UARTLogger::PrintString(const char* string)
 {
-	// Keep sending characters until we hit a NULL
-	while(*string)
-	{
-		TransmitCharacter(*(string++));
-	}
+    // Keep sending characters until we hit a NULL
+    while(*string)
+    {
+        TransmitCharacter(*(string++));
+    }
 }
 
 void UARTLogger::PrintStringWithNewLine(const char* string)

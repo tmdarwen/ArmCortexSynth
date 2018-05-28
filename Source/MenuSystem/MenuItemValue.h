@@ -28,10 +28,10 @@
 
 class MenuItemValue
 {
-	public:
-		virtual ~MenuItemValue() { }
+    public:
+        virtual ~MenuItemValue() { }
 
-		virtual void Increment() = 0;
-		virtual void Decrement() = 0;
-		virtual const char* GetValueAsText() = 0;
+        virtual void Increment() = 0;
+        virtual void Decrement() = 0;
+        virtual const char* GetValueAsText() = 0;
 };

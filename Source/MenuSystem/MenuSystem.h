@@ -30,9 +30,9 @@
 
 class MenuOutput
 {
-	public:
-		virtual ~MenuOutput() { }
-		virtual void SetText(uint8_t line, const char* text) = 0;
+    public:
+        virtual ~MenuOutput() { }
+        virtual void SetText(uint8_t line, const char* text) = 0;
 };
 
 
@@ -40,35 +40,35 @@ class Menu;
 
 class MenuSystem
 {
-	public:
-		enum Action
-		{
-			UP,
-			DOWN,
-			BACK,
-			ENTER
-		};
+    public:
+        enum Action
+        {
+            UP,
+            DOWN,
+            BACK,
+            ENTER
+        };
 
-		static const uint8_t MENU_ROWS = 4;
-		static const uint8_t TEXT_SIZE = 20;
-		static const uint8_t NULL_CHAR_SIZE = 1;
+        static const uint8_t MENU_ROWS = 4;
+        static const uint8_t TEXT_SIZE = 20;
+        static const uint8_t NULL_CHAR_SIZE = 1;
 
-		MenuSystem();
-		MenuSystem(Menu* mainMenu, MenuOutput* output);
+        MenuSystem();
+        MenuSystem(Menu* mainMenu, MenuOutput* output);
 
-		void SetMainMenu(Menu* mainMenu);
-		void SetOutput(MenuOutput* output);
-		void Reset();  // Resets screen to main menu
-		void HandleAction(Action action);
-		uint32_t GetRowCount();
-	
-	private:
-		void Init();
-		void UpdateText();
+        void SetMainMenu(Menu* mainMenu);
+        void SetOutput(MenuOutput* output);
+        void Reset();  // Resets screen to main menu
+        void HandleAction(Action action);
+        uint32_t GetRowCount();
+    
+    private:
+        void Init();
+        void UpdateText();
 
-		Menu* mainMenu_;
-		Menu* currentMenu_;
-		uint8_t currentRow_;
-		MenuOutput* output_;
-		bool valueTweaking_;
+        Menu* mainMenu_;
+        Menu* currentMenu_;
+        uint8_t currentRow_;
+        MenuOutput* output_;
+        bool valueTweaking_;
 };

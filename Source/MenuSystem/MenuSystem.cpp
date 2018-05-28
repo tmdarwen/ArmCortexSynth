@@ -40,42 +40,42 @@ MenuSystem::MenuSystem() :
 MenuSystem::MenuSystem(Menu* mainMenu, MenuOutput* output) :
     mainMenu_(mainMenu),
     output_(output),
-	currentMenu_(mainMenu_),
-	currentRow_(0),
+    currentMenu_(mainMenu_),
+    currentRow_(0),
     valueTweaking_(false) { }
 
 // Resets screen to main menu
 void MenuSystem::Reset()
 {
-	currentMenu_ = mainMenu_;
-	currentRow_ = 0;
-	valueTweaking_ = false;
+    currentMenu_ = mainMenu_;
+    currentRow_ = 0;
+    valueTweaking_ = false;
 
-	UpdateText();
+    UpdateText();
 }
 
 void MenuSystem::SetMainMenu(Menu* mainMenu)
 {
-	mainMenu_ = mainMenu;	
+    mainMenu_ = mainMenu;    
 }
 
 void MenuSystem::SetOutput(MenuOutput* output)
 {
-	output_ = output;	
+    output_ = output;    
 }
-	
+    
 uint32_t MenuSystem::GetRowCount()
 {
-	return currentMenu_->GetRowCount();	
+    return currentMenu_->GetRowCount();    
 }
-	
+    
 void MenuSystem::UpdateText()
 {
     unsigned int currentRow = 0;
-	for( ; currentRow < currentMenu_->GetRowCount(); ++currentRow)
-	{
-		char text[TEXT_SIZE + NULL_CHAR_SIZE];
-		text[0] = '\0';
+    for( ; currentRow < currentMenu_->GetRowCount(); ++currentRow)
+    {
+        char text[TEXT_SIZE + NULL_CHAR_SIZE];
+        text[0] = '\0';
         if(currentRow_ == currentRow) StringCat("> ", text, TEXT_SIZE);
         else StringCat("  ", text, TEXT_SIZE);
 
@@ -91,73 +91,73 @@ void MenuSystem::UpdateText()
         }
 
         output_->SetText(currentRow, text);
-	}
+    }
 
-	// Set any remaining rows to empty
-	while(currentRow < MENU_ROWS)
-	{
-	    output_->SetText(currentRow, "");
-	    ++currentRow;
-	}
+    // Set any remaining rows to empty
+    while(currentRow < MENU_ROWS)
+    {
+        output_->SetText(currentRow, "");
+        ++currentRow;
+    }
 }
 
 // TODO: Refactor using command pattern?
 void MenuSystem::HandleAction(MenuSystem::Action action)
 {
-	if(action == DOWN)
-	{
-		if(valueTweaking_)
-		{
-			currentMenu_->GetItem(currentRow_).Decrement();
-			UpdateText();
-		}
-		else if(currentRow_ + 1 < currentMenu_->GetRowCount())
-		{
-			++currentRow_;	
-			UpdateText();
-		}
-	}
-	else if(action == UP)
-	{
-		if(valueTweaking_)
-		{
-			currentMenu_->GetItem(currentRow_).Increment();
+    if(action == DOWN)
+    {
+        if(valueTweaking_)
+        {
+            currentMenu_->GetItem(currentRow_).Decrement();
             UpdateText();
-		}
-		else if(currentRow_ > 0)
-		{
-			--currentRow_;	
-			UpdateText();
-		}
-	}
-	else if(action == ENTER)
-	{
-		if(currentMenu_->GetItem(currentRow_).GetSubMenu())
-		{
-			currentMenu_ = currentMenu_->GetItem(currentRow_).GetSubMenu();
-			currentRow_ = 0;
-			UpdateText();
-		}
-		else if(valueTweaking_)
-		{
-			valueTweaking_ = false;
-		}
-		else
-		{
-			valueTweaking_ = true;
-		}
-	}
-	else if(action == BACK)
-	{
-		if(valueTweaking_)
-		{
-			valueTweaking_ = false;	
-		}
-		else if(currentMenu_->GetParentMenu())
-		{
-			currentMenu_ = currentMenu_->GetParentMenu();
-			currentRow_ = 0;
-			UpdateText();
-		}
-	}
+        }
+        else if(currentRow_ + 1 < currentMenu_->GetRowCount())
+        {
+            ++currentRow_;    
+            UpdateText();
+        }
+    }
+    else if(action == UP)
+    {
+        if(valueTweaking_)
+        {
+            currentMenu_->GetItem(currentRow_).Increment();
+            UpdateText();
+        }
+        else if(currentRow_ > 0)
+        {
+            --currentRow_;    
+            UpdateText();
+        }
+    }
+    else if(action == ENTER)
+    {
+        if(currentMenu_->GetItem(currentRow_).GetSubMenu())
+        {
+            currentMenu_ = currentMenu_->GetItem(currentRow_).GetSubMenu();
+            currentRow_ = 0;
+            UpdateText();
+        }
+        else if(valueTweaking_)
+        {
+            valueTweaking_ = false;
+        }
+        else
+        {
+            valueTweaking_ = true;
+        }
+    }
+    else if(action == BACK)
+    {
+        if(valueTweaking_)
+        {
+            valueTweaking_ = false;    
+        }
+        else if(currentMenu_->GetParentMenu())
+        {
+            currentMenu_ = currentMenu_->GetParentMenu();
+            currentRow_ = 0;
+            UpdateText();
+        }
+    }
 }

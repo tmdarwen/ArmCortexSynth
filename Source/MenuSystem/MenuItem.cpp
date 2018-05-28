@@ -31,43 +31,43 @@
 
 MenuItem::MenuItem() : subMenu_(0), menuItemValue_(0)
 {
-	text_[0] = '\0';
+    text_[0] = '\0';
 }
 
 MenuItem::MenuItem(const char* text, Menu* subMenu) : subMenu_(subMenu), menuItemValue_(0)
 {
-	StringCopy(text, text_, TEXT_SIZE);
+    StringCopy(text, text_, TEXT_SIZE);
 }
 
 MenuItem::MenuItem(const char* text, MenuItemValue* menuItemValue) : menuItemValue_(menuItemValue), subMenu_(0)
 {
-	StringCopy(text, text_, TEXT_SIZE);
+    StringCopy(text, text_, TEXT_SIZE);
 }
 
 const char* MenuItem::GetText()
 {
-	return text_;	
+    return text_;    
 }
 
 void MenuItem::Increment()
 {
-	if(menuItemValue_)
-	{
-		menuItemValue_->Increment();	
-	}
+    if(menuItemValue_)
+    {
+        menuItemValue_->Increment();    
+    }
 }
 
 void MenuItem::Decrement()
 {
-	if(menuItemValue_)
-	{
-		menuItemValue_->Decrement();	
-	}
+    if(menuItemValue_)
+    {
+        menuItemValue_->Decrement();    
+    }
 }
 
 Menu* MenuItem::GetSubMenu()
 {
-	return subMenu_;	
+    return subMenu_;    
 }
 
 MenuItemValue* MenuItem::GetMenuItemValue()

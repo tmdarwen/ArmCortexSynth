@@ -29,24 +29,24 @@
 template <class T>
 class Singleton
 {
-	public:
-		Singleton() { }
+    public:
+        Singleton() { }
 
-		static T& GetInstance()
-		{
-			if(instance_ == 0)
-			{
-				instance_ = new T();
-			}
+        static T& GetInstance()
+        {
+            if(instance_ == 0)
+            {
+                instance_ = new T();
+            }
 
-			return *instance_;
-		}
+            return *instance_;
+        }
 
-	protected:
+    protected:
         Singleton(const Singleton&);
         void operator=(const Singleton&);
 
-		static T* instance_;
+        static T* instance_;
 };
 
 template <class T> T* Singleton<T>::instance_ = 0;

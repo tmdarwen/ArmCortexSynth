@@ -32,11 +32,11 @@
 // be at least five characters in length.
 void ByteToHexString(char theByte, char* string)
 {
-	string[0] = '0';
-	string[1] = 'x';
-	string[2] = TO_HEX(((theByte & 0x00F0) >> 4));
-	string[3] = TO_HEX((theByte & 0x000F));
-	string[4] = '\0';
+    string[0] = '0';
+    string[1] = 'x';
+    string[2] = TO_HEX(((theByte & 0x00F0) >> 4));
+    string[3] = TO_HEX((theByte & 0x000F));
+    string[4] = '\0';
 }
 
 void DisableInterrupts()
@@ -46,10 +46,10 @@ void DisableInterrupts()
 
 void EnableInterrupts()
 {
-	__asm(" CPSIE  I\n");
+    __asm(" CPSIE  I\n");
 }
 
 void WaitForInterrupt()
 {
-	__asm(" WFI\n");
+    __asm(" WFI\n");
 }

@@ -32,18 +32,18 @@ OscillatorCent::OscillatorCent(Oscillator& oscillator) : oscillator_(oscillator)
 
 void OscillatorCent::Increment()
 {
-	if(oscillator_.GetCent() < MAX_VALUE_)
-	{
-	    oscillator_.SetCent(oscillator_.GetCent() + 1);
-	}
+    if(oscillator_.GetCent() < MAX_VALUE_)
+    {
+        oscillator_.SetCent(oscillator_.GetCent() + 1);
+    }
 }
 
 void OscillatorCent::Decrement()
 {
-	if(oscillator_.GetCent() > MIN_VALUE_)
-	{
+    if(oscillator_.GetCent() > MIN_VALUE_)
+    {
         oscillator_.SetCent(oscillator_.GetCent() - 1);
-	}
+    }
 }
 
 const char* OscillatorCent::GetValueAsText()
