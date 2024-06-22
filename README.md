@@ -2,9 +2,7 @@ ArmCortexSynth
 ==============
 
 A fully functioning MIDI synthesizer using an ARM Cortex-M4F processor ([Tiva LaunchPad TM4C123G](http://www.ti.com/tool/ek-tm4c123gxl)).  
-Video Demo: <https://youtu.be/UTizmNIYIBM>
 
- 
 
 **Hardware**
 
@@ -72,7 +70,7 @@ The unit tests are separate projects that build and run on a typical desktop pla
 
 **Miscellaneous Notes Concerning the Project**
 
--   Unfortunately TI's C++ compiler support is only up to C++03. I would have very much liked to have used some C++11 (and later) features :(
+-   Unfortunately TI's C++ compiler support is only up to C++03. I would have liked to have used some C++11 (and later) features
 
 -   Currently, the only (easy) way to build this is through TI's Code Composer Studio (see instructions above).  Ideally, I would have functionality in place to allow a build tool (CMake?) to generate a makefile or other project files.
 
